@@ -1,0 +1,31 @@
+{
+  "name": "monte-carlo-stats-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "蒙特卡洛模拟与统计假设检验平台",
+  "scripts": {
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:backend": "cd backend && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "dev": "concurrently -n backend,frontend -c magenta,cyan \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && source .venv/bin/activate && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:proxy": "bash scripts/dev-proxy.sh",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && source .venv/bin/activate && ruff check .",
+    "lint:frontend": "cd frontend && npm run lint",
+    "typecheck": "cd frontend && npx vue-tsc --noEmit",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && source .venv/bin/activate && pytest -v",
+    "test:frontend": "cd frontend && npm run test",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "check": "bash scripts/check-all.sh",
+    "release": "bash scripts/release.sh",
+    "release:dry": "bash scripts/release.sh --dry-run",
+    "api:check": "bash scripts/api-check.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

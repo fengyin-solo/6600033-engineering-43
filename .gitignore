@@ -229,6 +229,26 @@ sandbox/
 *.rar
 
 # =========================
+# Lint / Format cache
+# =========================
+.eslintcache
+.prettiercache
+.stylelintcache
+
+# =========================
+# IDE / Editor config (optional unignore)
+# =========================
+# .vscode/settings.json
+# .vscode/extensions.json
+!.editorconfig
+
+# =========================
+# Release artifacts
+# =========================
+*-dist.zip
+release/
+
+# =========================
 # Runtime files
 # =========================
 *.pid
